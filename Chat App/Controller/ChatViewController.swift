@@ -27,7 +27,6 @@ class ChatViewController: UIViewController {
         navigationItem.hidesBackButton = true
         // need to register the external tableview cell design to work with
         tableView.register(UINib(nibName: Constants.cellNibName, bundle: nil), forCellReuseIdentifier: Constants.cellIdentifier)
-        
         loadMessages()
     }
     
@@ -107,20 +106,20 @@ extension ChatViewController: UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellIdentifier, for: indexPath) as! MessageCell
         cell.label.text = message.body
         
-        //if the sender is the currentuser
-        if message.sender == Auth.auth().currentUser?.email {
-            cell.leftImageView.isHidden = true
-            cell.rightImageView.isHidden = false
-            cell.messageBubble.backgroundColor = UIColor(named: Constants.BrandColors.lightPurple)
-            cell.label.textColor = UIColor(named: Constants.BrandColors.purple)
-        }
-            //if the sender is not the current user
-        else {
-            cell.leftImageView.isHidden = false
-            cell.rightImageView.isHidden = true
-            cell.messageBubble.backgroundColor = UIColor(named: Constants.BrandColors.purple)
-            cell.label.textColor = UIColor(named: Constants.BrandColors.lightPurple)
-        }
+//        //if the sender is the currentuser
+//        if message.sender == Auth.auth().currentUser?.email {
+//            cell.leftImageView.isHidden = true
+//            cell.rightImageView.isHidden = false
+//            cell.messageBubble.backgroundColor = UIColor(named: Constants.BrandColors.lightPurple)
+//            cell.label.textColor = UIColor(named: Constants.BrandColors.purple)
+//        }
+//            //if the sender is not the current user
+//        else {
+//            cell.leftImageView.isHidden = false
+//            cell.rightImageView.isHidden = true
+//            cell.messageBubble.backgroundColor = UIColor(named: Constants.BrandColors.purple)
+//            cell.label.textColor = UIColor(named: Constants.BrandColors.lightPurple)
+//        }
         
         
         return cell
