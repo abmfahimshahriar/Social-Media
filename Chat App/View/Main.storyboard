@@ -340,13 +340,46 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="messageTextField" destination="UWj-GQ-Vph" id="CbB-8s-B74"/>
+                        <outlet property="postTextField" destination="UWj-GQ-Vph" id="HgU-Cp-eum"/>
                         <outlet property="tableView" destination="S6L-hg-cne" id="aWI-Go-BXw"/>
+                        <segue destination="Ben-nq-vuD" kind="show" identifier="showDetailPost" id="BXd-Dr-Nc2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jFP-qE-CyQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2942.0289855072465" y="134.59821428571428"/>
+        </scene>
+        <!--Message View Controller-->
+        <scene sceneID="tRV-Ep-LkZ">
+            <objects>
+                <viewController id="Ben-nq-vuD" customClass="MessageViewController" customModule="Chat_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Map-Ph-G1M">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="J9N-gY-KAg">
+                                <rect key="frame" x="0.0" y="44" width="375" height="193"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iAg-fC-fN7">
+                                <rect key="frame" x="0.0" y="245" width="375" height="533"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="AlP-mP-4ch"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="HaO-Ke-RYG"/>
+                    <connections>
+                        <outlet property="commentsTableView" destination="iAg-fC-fN7" id="sCn-Fj-XfV"/>
+                        <outlet property="messageTableView" destination="J9N-gY-KAg" id="fdO-vz-cWo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pek-N1-IRh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4186.3999999999996" y="148.52216748768473"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="nnS-lK-7HK">

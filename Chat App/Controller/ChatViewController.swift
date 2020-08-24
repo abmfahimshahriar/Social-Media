@@ -12,11 +12,12 @@ import FirebaseFirestore
 
 class ChatViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var messageTextField: UITextField!
+    @IBOutlet weak var postTextField: UITextField!
+    
     
     let db = Firestore.firestore()
     
-    var messages: [Message] = []
+    var posts: [Post] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,14 +28,14 @@ class ChatViewController: UIViewController {
         navigationItem.hidesBackButton = true
         // need to register the external tableview cell design to work with
         tableView.register(UINib(nibName: Constants.cellNibName, bundle: nil), forCellReuseIdentifier: Constants.cellIdentifier)
-        loadMessages()
+        loadPosts()
     }
     
-    func loadMessages() {
+    func loadPosts() {
         
         db.collection(Constants.FStore.collectionName).order(by: Constants.FStore.dateField).addSnapshotListener { (querySnapshot, error) in
             
-            self.messages = []
+            self.posts = []
             
             if let e = error {
                 print("there was an issue retrieving the data \(e)")
@@ -44,13 +45,16 @@ class ChatViewController: UIViewController {
                     for doc in snapshotDocuments {
                         let data = doc.data()
                         
-                        if let messageSender = data[Constants.FStore.senderField] as? String, let messageBody = data[Constants.FStore.bodyField] as? String {
-                            let newMessage = Message(sender: messageSender, body: messageBody)
-                            self.messages.append(newMessage)
+                        if let postSender = data[Constants.FStore.senderField] as? String,
+                            let postBody = data[Constants.FStore.bodyField] as? String,
+                            let commentsData = data[Constants.FStore.commentsField] as? [Comment],
+                            let likesData = data[Constants.FStore.likesField] as? [Like] {
+                            let newPost = Post(sender: postSender, body: postBody, comments: commentsData, likes: likesData)
+                            self.posts.append(newPost)
                             
                             DispatchQueue.main.async {
                                 self.tableView.reloadData()
-                                let indexPath = IndexPath(row: self.messages.count - 1, section: 0)
+                                let indexPath = IndexPath(row: self.posts.count - 1, section: 0)
                                 self.tableView.scrollToRow(at: indexPath, at: .top, animated: true)
                             }
                         }
@@ -61,18 +65,20 @@ class ChatViewController: UIViewController {
     }
     
     @IBAction func sendPressed(_ sender: UIButton) {
-        if let messageBody = messageTextField.text,let messageSender = Auth.auth().currentUser?.email {
+        if let postBody = postTextField.text,let postSender = Auth.auth().currentUser?.email {
             db.collection(Constants.FStore.collectionName).addDocument(data: [
-                Constants.FStore.senderField: messageSender,
-                Constants.FStore.bodyField: messageBody,
-                Constants.FStore.dateField: Date().timeIntervalSince1970
+                Constants.FStore.senderField: postSender,
+                Constants.FStore.bodyField: postBody,
+                Constants.FStore.dateField: Date().timeIntervalSince1970,
+                Constants.FStore.commentsField: [],
+                Constants.FStore.likesField: []
             ]) { (error) in
                 if let e = error {
                     print("there was an error while saving data \(e)")
                 }
                 else {
                     DispatchQueue.main.async {
-                        self.messageTextField.text = ""
+                        self.postTextField.text = ""
                     }
                     print("saved data successfully")
                 }
@@ -97,29 +103,14 @@ class ChatViewController: UIViewController {
 extension ChatViewController: UITableViewDataSource{
     // counts the number of data to be shown in the tableview cells and returns to the next function
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return messages.count
+        return posts.count
     }
     
     // renders tableview cell as the count provided by the previous function
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let message = messages[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellIdentifier, for: indexPath) as! MessageCell
-        cell.label.text = message.body
-        
-//        //if the sender is the currentuser
-//        if message.sender == Auth.auth().currentUser?.email {
-//            cell.leftImageView.isHidden = true
-//            cell.rightImageView.isHidden = false
-//            cell.messageBubble.backgroundColor = UIColor(named: Constants.BrandColors.lightPurple)
-//            cell.label.textColor = UIColor(named: Constants.BrandColors.purple)
-//        }
-//            //if the sender is not the current user
-//        else {
-//            cell.leftImageView.isHidden = false
-//            cell.rightImageView.isHidden = true
-//            cell.messageBubble.backgroundColor = UIColor(named: Constants.BrandColors.purple)
-//            cell.label.textColor = UIColor(named: Constants.BrandColors.lightPurple)
-//        }
+        let post = posts[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellIdentifier, for: indexPath) as! PostCell
+        cell.label.text = post.body
         
         
         return cell

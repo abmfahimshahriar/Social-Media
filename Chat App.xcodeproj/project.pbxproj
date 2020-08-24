@@ -8,9 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		2C03704624E11BC400F4874B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C03704524E11BC400F4874B /* Constants.swift */; };
-		2C03704824E1232400F4874B /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C03704724E1232400F4874B /* Message.swift */; };
-		2C03704B24E12BB000F4874B /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C03704924E12BB000F4874B /* MessageCell.swift */; };
-		2C03704C24E12BB000F4874B /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C03704A24E12BB000F4874B /* MessageCell.xib */; };
+		2C03704824E1232400F4874B /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C03704724E1232400F4874B /* Post.swift */; };
+		2C03704B24E12BB000F4874B /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C03704924E12BB000F4874B /* PostCell.swift */; };
+		2C03704C24E12BB000F4874B /* PostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C03704A24E12BB000F4874B /* PostCell.xib */; };
+		2C3B67B724F4681F00BA7FC3 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3B67B624F4681F00BA7FC3 /* MessageViewController.swift */; };
 		2C5E675C24E25E6D00CA09AB /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2C5E675B24E25E6D00CA09AB /* IQKeyboardManagerSwift */; };
 		2CA7316824E012AD00B3F92C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2CA7316724E012AD00B3F92C /* GoogleService-Info.plist */; };
 		2CCD73FC24DFD79A00380C46 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCD73FB24DFD79A00380C46 /* AppDelegate.swift */; };
@@ -29,9 +30,10 @@
 		0E2B5E0230E2DA59A9A31721 /* Pods-Chat App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chat App.release.xcconfig"; path = "Target Support Files/Pods-Chat App/Pods-Chat App.release.xcconfig"; sourceTree = "<group>"; };
 		26C4C7D77496E9093F61C25C /* Pods-Chat App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chat App.debug.xcconfig"; path = "Target Support Files/Pods-Chat App/Pods-Chat App.debug.xcconfig"; sourceTree = "<group>"; };
 		2C03704524E11BC400F4874B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		2C03704724E1232400F4874B /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
-		2C03704924E12BB000F4874B /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
-		2C03704A24E12BB000F4874B /* MessageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageCell.xib; sourceTree = "<group>"; };
+		2C03704724E1232400F4874B /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		2C03704924E12BB000F4874B /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
+		2C03704A24E12BB000F4874B /* PostCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostCell.xib; sourceTree = "<group>"; };
+		2C3B67B624F4681F00BA7FC3 /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		2CA7316724E012AD00B3F92C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2CCD73F824DFD79A00380C46 /* Chat App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Chat App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CCD73FB24DFD79A00380C46 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 				2CCD741624DFDE8500380C46 /* RegisterViewController.swift */,
 				2CCD741824DFE01900380C46 /* LoginViewController.swift */,
 				2CCD741A24DFE0B000380C46 /* ChatViewController.swift */,
+				2C3B67B624F4681F00BA7FC3 /* MessageViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -119,8 +122,8 @@
 			isa = PBXGroup;
 			children = (
 				2CCD740F24DFD82E00380C46 /* Main.storyboard */,
-				2C03704924E12BB000F4874B /* MessageCell.swift */,
-				2C03704A24E12BB000F4874B /* MessageCell.xib */,
+				2C03704924E12BB000F4874B /* PostCell.swift */,
+				2C03704A24E12BB000F4874B /* PostCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -128,7 +131,7 @@
 		2CCD741D24DFE19000380C46 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				2C03704724E1232400F4874B /* Message.swift */,
+				2C03704724E1232400F4874B /* Post.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -207,7 +210,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C03704C24E12BB000F4874B /* MessageCell.xib in Resources */,
+				2C03704C24E12BB000F4874B /* PostCell.xib in Resources */,
 				2CCD740824DFD79C00380C46 /* LaunchScreen.storyboard in Resources */,
 				2CA7316824E012AD00B3F92C /* GoogleService-Info.plist in Resources */,
 				2CCD740524DFD79C00380C46 /* Assets.xcassets in Resources */,
@@ -268,11 +271,12 @@
 				2CCD741324DFD8AA00380C46 /* WelcomeViewController.swift in Sources */,
 				2CCD73FC24DFD79A00380C46 /* AppDelegate.swift in Sources */,
 				2CCD741924DFE01900380C46 /* LoginViewController.swift in Sources */,
+				2C3B67B724F4681F00BA7FC3 /* MessageViewController.swift in Sources */,
 				2C03704624E11BC400F4874B /* Constants.swift in Sources */,
-				2C03704824E1232400F4874B /* Message.swift in Sources */,
+				2C03704824E1232400F4874B /* Post.swift in Sources */,
 				2CCD741B24DFE0B000380C46 /* ChatViewController.swift in Sources */,
 				2CCD73FE24DFD79A00380C46 /* SceneDelegate.swift in Sources */,
-				2C03704B24E12BB000F4874B /* MessageCell.swift in Sources */,
+				2C03704B24E12BB000F4874B /* PostCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

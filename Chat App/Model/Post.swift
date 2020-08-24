@@ -8,7 +8,18 @@
 
 import Foundation
 
-struct Message {
+struct Post {
     let sender: String
     let body: String
+    let comments: [Comment]
+    let likes: [Like]
+}
+
+struct Comment {
+    let name: String
+    let commentBody: String
+}
+
+struct Like {
+    let name: String
 }

@@ -9,7 +9,7 @@
 struct Constants {
     static let appName = "⚡️FlashChat"
     static let cellIdentifier = "ReusableCell"
-    static let cellNibName = "MessageCell"
+    static let cellNibName = "PostCell"
     static let registerSegue = "RegisterToChat"
     static let loginSegue = "LoginToChat"
     
@@ -21,9 +21,11 @@ struct Constants {
     }
     
     struct FStore {
-        static let collectionName = "messages"
+        static let collectionName = "posts"
         static let senderField = "sender"
         static let bodyField = "body"
         static let dateField = "date"
+        static let commentsField = "comments"
+        static let likesField = "likes"
     }
 }
