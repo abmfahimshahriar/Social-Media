@@ -9,17 +9,18 @@
 import Foundation
 
 struct Post {
+    let id: String
     let sender: String
     let body: String
-    let comments: [Comment]
-    let likes: [Like]
+    var comments: [String]
+    var likes: [String]
 }
 
-struct Comment {
-    let name: String
-    let commentBody: String
-}
-
-struct Like {
-    let name: String
-}
+//struct Comment {
+//    let name: String
+//    let commentBody: String
+//}
+//
+//struct Like {
+//    let name: String
+//}

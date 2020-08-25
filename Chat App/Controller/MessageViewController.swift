@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MessageViewController: UIViewController {
+class PostViewController: UIViewController {
 
     @IBOutlet weak var messageTableView: UITableView!
     @IBOutlet weak var commentsTableView: UITableView!

@@ -22,7 +22,7 @@ class ChatViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //to interact with each cell in table view need to set the delegate to self
-        //tableView.delegate = self
+        tableView.delegate = self
         tableView.dataSource = self
         title = Constants.appName
         navigationItem.hidesBackButton = true
@@ -44,12 +44,12 @@ class ChatViewController: UIViewController {
                 if let snapshotDocuments = querySnapshot?.documents {
                     for doc in snapshotDocuments {
                         let data = doc.data()
-                        
+                        let docId = doc.documentID
                         if let postSender = data[Constants.FStore.senderField] as? String,
                             let postBody = data[Constants.FStore.bodyField] as? String,
-                            let commentsData = data[Constants.FStore.commentsField] as? [Comment],
-                            let likesData = data[Constants.FStore.likesField] as? [Like] {
-                            let newPost = Post(sender: postSender, body: postBody, comments: commentsData, likes: likesData)
+                            let commentsData = data[Constants.FStore.commentsField] as? [String],
+                            let likesData = data[Constants.FStore.likesField] as? [String] {
+                            let newPost = Post(id:docId, sender: postSender, body: postBody, comments: commentsData, likes: likesData)
                             self.posts.append(newPost)
                             
                             DispatchQueue.main.async {
@@ -65,8 +65,7 @@ class ChatViewController: UIViewController {
     }
     
     @IBAction func sendPressed(_ sender: UIButton) {
-        if let postBody = postTextField.text,let postSender = Auth.auth().currentUser?.email {
-            db.collection(Constants.FStore.collectionName).addDocument(data: [
+        if let postBody = postTextField.text,let postSender = Auth.auth().currentUser?.email {            db.collection(Constants.FStore.collectionName).addDocument(data: [
                 Constants.FStore.senderField: postSender,
                 Constants.FStore.bodyField: postBody,
                 Constants.FStore.dateField: Date().timeIntervalSince1970,
@@ -121,8 +120,16 @@ extension ChatViewController: UITableViewDataSource{
 
 
 // to interact with each of the cell in table view
-//extension ChatViewController: UITableViewDelegate {
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        print(indexPath.row)
-//    }
-//}
+extension ChatViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: Constants.postSegue, sender: self)
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationVC = segue.destination as! PostViewController
+        if let indexPath = tableView.indexPathForSelectedRow {
+            destinationVC.selectedPost = posts[indexPath.row]
+        }
+    }
+}

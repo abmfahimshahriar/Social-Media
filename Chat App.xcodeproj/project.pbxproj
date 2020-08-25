@@ -11,7 +11,7 @@
 		2C03704824E1232400F4874B /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C03704724E1232400F4874B /* Post.swift */; };
 		2C03704B24E12BB000F4874B /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C03704924E12BB000F4874B /* PostCell.swift */; };
 		2C03704C24E12BB000F4874B /* PostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C03704A24E12BB000F4874B /* PostCell.xib */; };
-		2C3B67B724F4681F00BA7FC3 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3B67B624F4681F00BA7FC3 /* MessageViewController.swift */; };
+		2C3B67B724F4681F00BA7FC3 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3B67B624F4681F00BA7FC3 /* PostViewController.swift */; };
 		2C5E675C24E25E6D00CA09AB /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2C5E675B24E25E6D00CA09AB /* IQKeyboardManagerSwift */; };
 		2CA7316824E012AD00B3F92C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2CA7316724E012AD00B3F92C /* GoogleService-Info.plist */; };
 		2CCD73FC24DFD79A00380C46 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCD73FB24DFD79A00380C46 /* AppDelegate.swift */; };
@@ -33,7 +33,7 @@
 		2C03704724E1232400F4874B /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		2C03704924E12BB000F4874B /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		2C03704A24E12BB000F4874B /* PostCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostCell.xib; sourceTree = "<group>"; };
-		2C3B67B624F4681F00BA7FC3 /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
+		2C3B67B624F4681F00BA7FC3 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		2CA7316724E012AD00B3F92C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2CCD73F824DFD79A00380C46 /* Chat App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Chat App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CCD73FB24DFD79A00380C46 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -113,7 +113,7 @@
 				2CCD741624DFDE8500380C46 /* RegisterViewController.swift */,
 				2CCD741824DFE01900380C46 /* LoginViewController.swift */,
 				2CCD741A24DFE0B000380C46 /* ChatViewController.swift */,
-				2C3B67B624F4681F00BA7FC3 /* MessageViewController.swift */,
+				2C3B67B624F4681F00BA7FC3 /* PostViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -271,7 +271,7 @@
 				2CCD741324DFD8AA00380C46 /* WelcomeViewController.swift in Sources */,
 				2CCD73FC24DFD79A00380C46 /* AppDelegate.swift in Sources */,
 				2CCD741924DFE01900380C46 /* LoginViewController.swift in Sources */,
-				2C3B67B724F4681F00BA7FC3 /* MessageViewController.swift in Sources */,
+				2C3B67B724F4681F00BA7FC3 /* PostViewController.swift in Sources */,
 				2C03704624E11BC400F4874B /* Constants.swift in Sources */,
 				2C03704824E1232400F4874B /* Post.swift in Sources */,
 				2CCD741B24DFE0B000380C46 /* ChatViewController.swift in Sources */,

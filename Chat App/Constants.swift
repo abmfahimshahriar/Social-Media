@@ -12,6 +12,7 @@ struct Constants {
     static let cellNibName = "PostCell"
     static let registerSegue = "RegisterToChat"
     static let loginSegue = "LoginToChat"
+    static let postSegue = "showDetailedPost"
     
     struct BrandColors {
         static let purple = "BrandPurple"
